@@ -14,9 +14,19 @@ public class SceneManager : MonoBehaviour {
 		Application.LoadLevel("TelaCombinacao");
 	}
 
-	public void telaTitulo()
+	public void telaTituloEF()
 	{
 		GeneCombiner.numErvilhasGeradas = 0;
+		Application.LoadLevel("TelaInicialEF");
+	}
+
+	public void telaTituloEM()
+	{
+		Application.LoadLevel("TelaInicialEM");
+	}
+
+	public void telaInicial()
+	{
 		Application.LoadLevel("TelaInicial");
 	}
 
