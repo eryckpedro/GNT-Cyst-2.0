@@ -23,7 +23,7 @@ public class GeneCombiner : MonoBehaviour {
 		
 		combinaAlelos();
 		
-		Application.LoadLevel("TelaResultado");
+		Application.LoadLevel("EF_TelaResultado");
 		
 	}
 

@@ -3,26 +3,26 @@ using System.Collections;
 
 public class SceneManager : MonoBehaviour {
 
-	public void novaCombinacao()
+	public void EF_novaCombinacao()
 	{
 		resetaVariaveis();
-		Application.LoadLevel("TelaCombinacao");
+		Application.LoadLevel("EF_TelaCombinacao");
 	}
 
-	public void iniciaSimulacao()
+	public void EF_iniciaSimulacao()
 	{
-		Application.LoadLevel("TelaCombinacao");
+		Application.LoadLevel("EF_TelaCombinacao");
 	}
 
-	public void telaTituloEF()
+	public void EF_telaTitulo()
 	{
 		GeneCombiner.numErvilhasGeradas = 0;
-		Application.LoadLevel("TelaInicialEF");
+		Application.LoadLevel("EF_TelaInicial");
 	}
 
-	public void telaTituloEM()
+	public void EM_telaTitulo()
 	{
-		Application.LoadLevel("TelaInicialEM");
+		Application.LoadLevel("EM_TelaInicial");
 	}
 
 	public void telaInicial()
@@ -30,24 +30,29 @@ public class SceneManager : MonoBehaviour {
 		Application.LoadLevel("TelaInicial");
 	}
 
-	public void telaInformacao()
+	public void telaSobreSwEdu()
 	{
-		Application.LoadLevel("TelaInformacao");
+		Application.LoadLevel("TelaSobreSwEdu");
 	}
 
-	public void telaDesafio()
+	public void EF_telaInformacao()
 	{
-		Application.LoadLevel("TelaDesafio");
+		Application.LoadLevel("EF_TelaInformacao");
 	}
 
-	public void acertouDesafio()
+	public void EF_telaDesafio()
 	{
-		Application.LoadLevel("TelaDesafioAcerto");
+		Application.LoadLevel("EF_TelaDesafio");
 	}
 
-	public void errouDesafio()
+	public void EF_acertouDesafio()
 	{
-		Application.LoadLevel("TelaDesafioErro");
+		Application.LoadLevel("EF_TelaDesafioAcerto");
+	}
+
+	public void EF_errouDesafio()
+	{
+		Application.LoadLevel("EF_TelaDesafioErro");
 	}
 
 	public void encerraAplicativo()
