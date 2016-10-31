@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SceneManager : MonoBehaviour {
 
+	//Telas Ensino Fundamental
 	public void EF_novaCombinacao()
 	{
 		resetaVariaveis();
@@ -18,21 +19,6 @@ public class SceneManager : MonoBehaviour {
 	{
 		GeneCombiner.numErvilhasGeradas = 0;
 		Application.LoadLevel("EF_TelaInicial");
-	}
-
-	public void EM_telaTitulo()
-	{
-		Application.LoadLevel("EM_TelaInicial");
-	}
-
-	public void telaInicial()
-	{
-		Application.LoadLevel("TelaInicial");
-	}
-
-	public void telaSobreSwEdu()
-	{
-		Application.LoadLevel("TelaSobreSwEdu");
 	}
 
 	public void EF_telaInformacao()
@@ -55,10 +41,35 @@ public class SceneManager : MonoBehaviour {
 		Application.LoadLevel("EF_TelaDesafioErro");
 	}
 
+
+	//Telas Ensino Medio
+	public void EM_telaTitulo()
+	{
+		Application.LoadLevel("EM_TelaInicial");
+	}
+
+	public void EM_PROB_telaInicial()
+	{
+		Application.LoadLevel("EM_PROB_TelaInicial");
+	}
+
+
+	//Outras Telas
+	public void telaInicial()
+	{
+		Application.LoadLevel("TelaInicial");
+	}
+	
+	public void telaSobreSwEdu()
+	{
+		Application.LoadLevel("TelaSobreSwEdu");
+	}
+
 	public void encerraAplicativo()
 	{
 		Application.Quit();
 	}
+
 
 	void resetaVariaveis()
 	{
