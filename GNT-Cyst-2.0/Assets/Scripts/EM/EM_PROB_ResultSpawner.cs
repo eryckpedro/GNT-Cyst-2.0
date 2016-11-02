@@ -19,7 +19,9 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 
 	public void geraErvilhasResultantes()
 	{
-		int i;
+		int i, pos;
+		int[] vetorProbabilidades = new int[EM_PROB_GeneCombiner.numErvilhasGeradas];
+
 		float verdAux, amarAux, amarHibAux;
 
 		verdAux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades["aa"] / 100f);
@@ -30,14 +32,41 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 		numErvilhasAmarelas = (int) amarAux;
 		numErvilhasAmarelasHib = (int) amarHibAux;
 
+		pos = 0;
 		for(i = 0; i < numErvilhasVerdes; i++)
-			geraErvilhasVerdes();
-
+		{
+			vetorProbabilidades[pos] = 1;
+			pos++;
+		}
+		
 		for(i = 0; i < numErvilhasAmarelas; i++)
-			geraErvilhasAmarelas();
-
+		{
+			vetorProbabilidades[pos] = 2;
+			pos++;
+		}
+		
 		for(i = 0; i < numErvilhasAmarelasHib; i++)
-			geraErvilhasAmarelasHib();
+		{
+			vetorProbabilidades[pos] = 3;
+			pos++;
+		}
+		 
+
+		System.Random rnd = new System.Random();
+		for(i = 0; i < EM_PROB_GeneCombiner.numErvilhasGeradas; i++)
+		{
+			int posVetorProb = rnd.Next(0, EM_PROB_GeneCombiner.numErvilhasGeradas);
+
+			if( vetorProbabilidades[posVetorProb] == 1 )
+				geraErvilhasVerdes();
+
+			if( vetorProbabilidades[posVetorProb] == 2 )
+				geraErvilhasAmarelas();
+
+			if( vetorProbabilidades[posVetorProb] == 3 )
+				geraErvilhasAmarelasHib();
+
+		}
 	}
 
 

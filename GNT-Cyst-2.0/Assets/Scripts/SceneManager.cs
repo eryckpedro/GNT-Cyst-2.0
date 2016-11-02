@@ -55,6 +55,7 @@ public class SceneManager : MonoBehaviour {
 
 	public void EM_PROB_telaCombinacao()
 	{
+		EM_PROB_resetaVariaveis();
 		Application.LoadLevel("EM_PROB_TelaCombinacao");
 	}
 
@@ -80,5 +81,11 @@ public class SceneManager : MonoBehaviour {
 	{
 		GeneCombiner.mapaProbabilidades.Clear();
 		GeneCombiner.numErvilhasGeradas = 0;
+	}
+
+	void EM_PROB_resetaVariaveis()
+	{
+		EM_PROB_GeneCombiner.mapaProbabilidades.Clear();
+		EM_PROB_GeneCombiner.numErvilhasGeradas = 0;
 	}
 }
