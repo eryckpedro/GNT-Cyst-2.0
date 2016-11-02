@@ -55,8 +55,18 @@ public class SceneManager : MonoBehaviour {
 
 	public void EM_PROB_telaCombinacao()
 	{
-		EM_PROB_resetaVariaveis();
 		Application.LoadLevel("EM_PROB_TelaCombinacao");
+	}
+
+	public void EM_PROB_novaCombinacao()
+	{
+		EM_PROB_resetaVariaveis();
+		EM_PROB_telaCombinacao();
+	}
+
+	public void EM_PROB_telaInformacao()
+	{
+		Application.LoadLevel("EM_PROB_TelaInformacao");
 	}
 
 
@@ -64,6 +74,11 @@ public class SceneManager : MonoBehaviour {
 	public void telaInicial()
 	{
 		Application.LoadLevel("TelaInicial");
+	}
+
+	public void telaInfoGeral()
+	{
+		Application.LoadLevel("TelaInformacaoGeral");
 	}
 	
 	public void telaSobreSwEdu()
