@@ -53,6 +53,11 @@ public class SceneManager : MonoBehaviour {
 		Application.LoadLevel("EM_PROB_TelaInicial");
 	}
 
+	public void EM_PROB_telaCombinacao()
+	{
+		Application.LoadLevel("EM_PROB_TelaCombinacao");
+	}
+
 
 	//Outras Telas
 	public void telaInicial()
