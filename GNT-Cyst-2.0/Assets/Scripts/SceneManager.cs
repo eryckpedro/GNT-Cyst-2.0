@@ -86,6 +86,17 @@ public class SceneManager : MonoBehaviour {
 		EM_PLM_telaCombinacao();
 	}
 
+	public void EM_PLM_ABO_telaCombinacao()
+	{
+		Application.LoadLevel("EM_PLM_ABO_TelaCombinacao");
+	}
+
+	public void EM_PLM_ABO_novaCombinacao()
+	{
+		EM_PROB_resetaVariaveis();
+		EM_PLM_ABO_telaCombinacao();
+	}
+
 
 	//Outras Telas
 	public void telaInicial()

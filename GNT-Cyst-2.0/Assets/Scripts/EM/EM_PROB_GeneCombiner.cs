@@ -37,6 +37,12 @@ public class EM_PROB_GeneCombiner : MonoBehaviour {
 			combinaAlelosMaravilha();
 			Application.LoadLevel("EM_PLM_TelaResultado");
 		}
+
+		if( tipoElementoCombinado == 3)
+		{
+			combinaAlelosHemacia();
+			Application.LoadLevel("EM_PLM_ABO_TelaResultado");
+		}
 		
 	}
 
@@ -59,7 +65,7 @@ public class EM_PROB_GeneCombiner : MonoBehaviour {
 		resultado = new List<string>();
 		mapaProbabilidades = new Dictionary<string, int>();
 	}
-
+	
 	void combinaAlelos()
 	{
 		int probAlelo_aa = 0, probAlelo_AA = 0, probAlelo_Aa = 0;
@@ -134,4 +140,89 @@ public class EM_PROB_GeneCombiner : MonoBehaviour {
 		mapaProbabilidades.Add("VB", probAlelo_VB);
 	}
 
+	void combinaAlelosHemacia()
+	{
+		int probAlelo_IaIa = 0, probAlelo_Iai = 0, probAlelo_IbIb = 0, probAlelo_Ibi = 0, probAlelo_IaIb = 0, probAlelo_ii = 0;
+		
+		string alelo1A, alelo2A, alelo1B = "", alelo2B = "";
+		
+		string[] vetorAlelos1 = new string[2];
+		string[] vetorAlelos2 = new string[2];
+		
+		
+		alelo1A = vetorGene1[0].ToString() + vetorGene1[1].ToString();
+		
+		if(vetorGene1.Length > 2)
+			alelo1B = vetorGene1[2].ToString() + vetorGene1[3].ToString();
+		
+		alelo2A = vetorGene2[0].ToString() + vetorGene2[1].ToString();
+		
+		if(vetorGene2.Length > 2)
+			alelo2B = vetorGene2[2].ToString() + vetorGene2[3].ToString();
+		
+		if(alelo1A.Equals("ii"))
+		{
+			alelo1A = "i"; 
+			alelo1B = "i";
+		}
+		
+		if(alelo2A.Equals("ii"))
+		{
+			alelo2A = "i"; 
+			alelo2B = "i";
+		}
+		
+		alelo1A = alelo1A.Replace(" ", string.Empty);
+		alelo1B = alelo1B.Replace(" ", string.Empty);
+		alelo2A = alelo2A.Replace(" ", string.Empty);
+		alelo2B = alelo2B.Replace(" ", string.Empty);
+		
+		vetorAlelos1[0] = alelo1A; vetorAlelos1[1] = alelo1B;
+		vetorAlelos2[0] = alelo2A; vetorAlelos2[1] = alelo2B;
+		
+		for(int i = 0; i < 2; i++)
+		{
+			for(int j = 0; j < 2; j++)
+			{
+				string tempRes = vetorAlelos1[i] + vetorAlelos2[j];
+				
+				if(tempRes.Equals("IbIa")) tempRes = "IaIb";
+				if(tempRes.Equals("iIa")) tempRes = "Iai";
+				if(tempRes.Equals("iIb")) tempRes = "Ibi";
+				
+				switch(tempRes)
+				{
+				case "IaIa":
+					probAlelo_IaIa += 25;
+					break;
+				case "IaIb":
+					probAlelo_IaIb += 25;
+					break;
+				case "Iai":
+					probAlelo_Iai += 25;
+					break;
+				case "IbIb":
+					probAlelo_IbIb += 25;
+					break;
+				case "Ibi":
+					probAlelo_Ibi += 25;
+					break;
+				case "ii":
+					probAlelo_ii += 25;
+					break;
+					
+				}
+			}
+		}
+		
+		
+		mapaProbabilidades.Add("IaIa", probAlelo_IaIa);
+		mapaProbabilidades.Add("IaIb", probAlelo_IaIb);
+		mapaProbabilidades.Add("Iai", probAlelo_Iai);
+		mapaProbabilidades.Add("IbIb", probAlelo_IbIb);
+		mapaProbabilidades.Add("Ibi", probAlelo_Ibi);
+		mapaProbabilidades.Add("ii", probAlelo_ii);
+		
+		
+	}
 }

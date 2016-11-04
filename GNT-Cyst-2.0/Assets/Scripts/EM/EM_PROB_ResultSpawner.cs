@@ -12,6 +12,13 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 	public GameObject maravilhaVermelhaPrefab;
 	public GameObject maravilhaRosaPrefab;
 
+	public GameObject hemIaIaPrefab;
+	public GameObject hemIaIbPrefab;
+	public GameObject hemIaiPrefab;
+	public GameObject hemIbIbPrefab;
+	public GameObject hemIbiPrefab;
+	public GameObject hemiiPrefab;
+
 	private int numErvilhasVerdes;
 	private int numErvilhasAmarelas;
 	private int numErvilhasAmarelasHib;
@@ -20,6 +27,13 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 	private int numMaravilhasVermelhas;
 	private int numMaravilhasRosas;
 
+	private int numHemIaIa;
+	private int numHemIaIb;
+	private int numHemIai;
+	private int numHemIbIb;
+	private int numHemIbi;
+	private int numHemii;
+
 	void Start()
 	{
 		if(EM_PROB_GeneCombiner.tipoElementoCombinado == 1)
@@ -27,7 +41,156 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 
 		if(EM_PROB_GeneCombiner.tipoElementoCombinado == 2)
 			geraMaravilhasResultantes();
+
+		if(EM_PROB_GeneCombiner.tipoElementoCombinado == 3)
+			geraHemaciasResultantes();
 	}
+
+	public void geraHemaciasResultantes()
+	{
+		int i, pos;
+		int[] vetorProbabilidades = new int[EM_PROB_GeneCombiner.numErvilhasGeradas];
+		
+		float hemIaIaAux, hemIaIbAux, hemIaiAux, hemIbIbAux, hemIbiAux, hemiiAux;
+		
+		hemIaIaAux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades["IaIa"] / 100f);
+		hemIaIbAux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades["IaIb"] / 100f);
+		hemIaiAux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades["Iai"] / 100f);
+		hemIbIbAux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades["IbIb"] / 100f);
+		hemIbiAux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades["Ibi"] / 100f);
+		hemiiAux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades["ii"] / 100f);
+		
+		numHemIaIa = (int) hemIaIaAux;
+		numHemIaIb = (int) hemIaIbAux;
+		numHemIai = (int) hemIaiAux;
+		numHemIbIb = (int) hemIbIbAux;
+		numHemIbi = (int) hemIbiAux;
+		numHemii = (int) hemiiAux;
+		
+		pos = 0;
+		for(i = 0; i < numHemIaIa; i++)
+		{
+			vetorProbabilidades[pos] = 1;
+			pos++;
+		}
+		
+		for(i = 0; i < numHemIaIb; i++)
+		{
+			vetorProbabilidades[pos] = 2;
+			pos++;
+		}
+		
+		for(i = 0; i < numHemIai; i++)
+		{
+			vetorProbabilidades[pos] = 3;
+			pos++;
+		}
+
+		for(i = 0; i < numHemIbIb; i++)
+		{
+			vetorProbabilidades[pos] = 4;
+			pos++;
+		}
+		
+		for(i = 0; i < numHemIbi; i++)
+		{
+			vetorProbabilidades[pos] = 5;
+			pos++;
+		}
+		
+		for(i = 0; i < numHemii; i++)
+		{
+			vetorProbabilidades[pos] = 6;
+			pos++;
+		}
+		
+		
+		System.Random rnd = new System.Random();
+		for(i = 0; i < EM_PROB_GeneCombiner.numErvilhasGeradas; i++)
+		{
+			int posVetorProb = rnd.Next(0, EM_PROB_GeneCombiner.numErvilhasGeradas);
+			
+			if( vetorProbabilidades[posVetorProb] == 1 )
+				geraHemIaIa();
+			
+			if( vetorProbabilidades[posVetorProb] == 2 )
+				geraHemIaIb();
+			
+			if( vetorProbabilidades[posVetorProb] == 3 )
+				geraHemIai();
+
+			if( vetorProbabilidades[posVetorProb] == 4 )
+				geraHemIbIb();
+
+			if( vetorProbabilidades[posVetorProb] == 5 )
+				geraHemIbi();
+
+			if( vetorProbabilidades[posVetorProb] == 6 )
+				geraHemii();
+			
+		}
+	}
+
+	public void geraHemIaIa()
+	{
+		GameObject hemIaIa;
+		
+		hemIaIa = Instantiate(hemIaIaPrefab, transform.position, 
+		                           transform.rotation) as GameObject;
+		
+		hemIaIa.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraHemIaIb()
+	{
+		GameObject hemIaIb;
+		
+		hemIaIb = Instantiate(hemIaIbPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		hemIaIb.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraHemIai()
+	{
+		GameObject hemIai;
+		
+		hemIai = Instantiate(hemIaiPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		hemIai.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraHemIbIb()
+	{
+		GameObject hemIbIb;
+		
+		hemIbIb = Instantiate(hemIbIbPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		hemIbIb.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraHemIbi()
+	{
+		GameObject hemIbi;
+		
+		hemIbi = Instantiate(hemIbiPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		hemIbi.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraHemii()
+	{
+		GameObject hemii;
+		
+		hemii = Instantiate(hemiiPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		hemii.transform.SetParent(gameObject.transform, false);
+	}
+
 
 	public void geraErvilhasResultantes()
 	{
@@ -194,4 +357,5 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 		
 		maravilhaRosa.transform.SetParent(gameObject.transform, false);
 	}
+	
 }
