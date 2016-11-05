@@ -75,6 +75,11 @@ public class SceneManager : MonoBehaviour {
 		Application.LoadLevel("EM_PLM_TelaInicial");
 	}
 
+	public void EM_PLM_telaInformacao()
+	{
+		Application.LoadLevel("EM_PLM_TelaInformacao");
+	}
+
 	public void EM_PLM_telaCombinacao()
 	{
 		Application.LoadLevel("EM_PLM_TelaCombinacao");
@@ -95,6 +100,28 @@ public class SceneManager : MonoBehaviour {
 	{
 		EM_PROB_resetaVariaveis();
 		EM_PLM_ABO_telaCombinacao();
+	}
+
+
+	public void EM_SLM_telaInicial()
+	{
+		Application.LoadLevel("EM_SLM_TelaInicial");
+	}
+
+	public void EM_SLM_telaInformacao()
+	{
+		Application.LoadLevel("EM_SLM_TelaInformacao");
+	}
+
+	public void EM_SLM_telaCombinacao()
+	{
+		Application.LoadLevel("EM_SLM_TelaCombinacao");
+	}
+
+	public void EM_SLM_novaCombinacao()
+	{
+		EM_PROB_resetaVariaveis();
+		EM_SLM_telaCombinacao();
 	}
 
 
@@ -129,6 +156,7 @@ public class SceneManager : MonoBehaviour {
 	void EM_PROB_resetaVariaveis()
 	{
 		EM_PROB_GeneCombiner.mapaProbabilidades.Clear();
+		EM_PROB_GeneCombiner.mapaProbabilidades2.Clear();
 		EM_PROB_GeneCombiner.numErvilhasGeradas = 0;
 	}
 }

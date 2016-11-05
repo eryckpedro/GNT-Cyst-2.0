@@ -19,6 +19,16 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 	public GameObject hemIbiPrefab;
 	public GameObject hemiiPrefab;
 
+	public GameObject ervAARRPrefab;
+	public GameObject ervAARrPrefab;
+	public GameObject ervAArrPrefab;
+	public GameObject ervAaRRPrefab;
+	public GameObject ervAaRrPrefab;
+	public GameObject ervAarrPrefab;
+	public GameObject ervaaRRPrefab;
+	public GameObject ervaaRrPrefab;
+	public GameObject ervaarrPrefab;
+
 	private int numErvilhasVerdes;
 	private int numErvilhasAmarelas;
 	private int numErvilhasAmarelasHib;
@@ -44,6 +54,214 @@ public class EM_PROB_ResultSpawner : MonoBehaviour {
 
 		if(EM_PROB_GeneCombiner.tipoElementoCombinado == 3)
 			geraHemaciasResultantes();
+
+		if(EM_PROB_GeneCombiner.tipoElementoCombinado == 4)
+			geraErvilhasSLMResultantes();
+	}
+
+	public void geraErvilhasSLMResultantes()
+	{
+		int i, pos;
+		int[] vetorProbabilidades = new int[EM_PROB_GeneCombiner.numErvilhasGeradas];
+
+		int numervAARR, numervAARr, numervAArr, numervAaRR, numervAaRr, numervAarr;
+		int numervaaRR, numervaaRr, numervaarr;
+
+		
+		float ervAARR_Aux, ervAARr_Aux, ervAArr_Aux, ervAaRR_Aux, ervAaRr_Aux, ervAarr_Aux;
+		float ervaaRR_Aux, ervaaRr_Aux, ervaarr_Aux;
+
+		ervAARR_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["AARR"] / 100f);
+		ervAARr_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["AARr"] / 100f);
+		ervAArr_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["AArr"] / 100f);
+		ervAaRR_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["AaRR"] / 100f);
+		ervAaRr_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["AaRr"] / 100f);
+		ervAarr_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["Aarr"] / 100f);
+		ervaaRR_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["aaRR"] / 100f);
+		ervaaRr_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["aaRr"] / 100f);
+		ervaarr_Aux = EM_PROB_GeneCombiner.numErvilhasGeradas * (EM_PROB_GeneCombiner.mapaProbabilidades2["aarr"] / 100f);
+
+		numervAARR = (int) ervAARR_Aux;
+		numervAARr = (int) ervAARr_Aux;
+		numervAArr = (int) ervAArr_Aux;
+		numervAaRR = (int) ervAaRR_Aux;
+		numervAaRr = (int) ervAaRr_Aux;
+		numervAarr = (int) ervAarr_Aux;
+		numervaaRR = (int) ervaaRR_Aux;
+		numervaaRr = (int) ervaaRr_Aux;
+		numervaarr = (int) ervaarr_Aux;
+
+		pos = 0;
+		for(i = 0; i < numervAARR; i++)
+		{
+			vetorProbabilidades[pos] = 1;
+			pos++;
+		}
+		for(i = 0; i < numervAARr; i++)
+		{
+			vetorProbabilidades[pos] = 2;
+			pos++;
+		}
+		for(i = 0; i < numervAArr; i++)
+		{
+			vetorProbabilidades[pos] = 3;
+			pos++;
+		}
+		for(i = 0; i < numervAaRR; i++)
+		{
+			vetorProbabilidades[pos] = 4;
+			pos++;
+		}
+		for(i = 0; i < numervAaRr; i++)
+		{
+			vetorProbabilidades[pos] = 5;
+			pos++;
+		}
+		for(i = 0; i < numervAarr; i++)
+		{
+			vetorProbabilidades[pos] = 6;
+			pos++;
+		}
+		for(i = 0; i < numervaaRR; i++)
+		{
+			vetorProbabilidades[pos] = 7;
+			pos++;
+		}
+		for(i = 0; i < numervaaRr; i++)
+		{
+			vetorProbabilidades[pos] = 8;
+			pos++;
+		}
+		for(i = 0; i < numervaarr; i++)
+		{
+			vetorProbabilidades[pos] = 9;
+			pos++;
+		}
+
+		System.Random rnd = new System.Random();
+		for(i = 0; i < EM_PROB_GeneCombiner.numErvilhasGeradas; i++)
+		{
+			int posVetorProb = rnd.Next(0, EM_PROB_GeneCombiner.numErvilhasGeradas);
+			
+			if( vetorProbabilidades[posVetorProb] == 1 )
+				geraErvAARR();
+			
+			if( vetorProbabilidades[posVetorProb] == 2 )
+				geraErvAARr();
+			
+			if( vetorProbabilidades[posVetorProb] == 3 )
+				geraErvAArr();
+			
+			if( vetorProbabilidades[posVetorProb] == 4 )
+				geraErvAaRR();
+			
+			if( vetorProbabilidades[posVetorProb] == 5 )
+				geraErvAaRr();
+			
+			if( vetorProbabilidades[posVetorProb] == 6 )
+				geraErvAarr();
+
+			if( vetorProbabilidades[posVetorProb] == 7 )
+				geraErvaaRR();
+
+			if( vetorProbabilidades[posVetorProb] == 8 )
+				geraErvaaRr();
+
+			if( vetorProbabilidades[posVetorProb] == 9 )
+				geraErvaarr();
+			
+		}
+
+	}
+
+	public void geraErvAARR()
+	{
+		GameObject ervAARR;
+		
+		ervAARR = Instantiate(ervAARRPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervAARR.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvAARr()
+	{
+		GameObject ervAARr;
+		
+		ervAARr = Instantiate(ervAARrPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervAARr.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvAArr()
+	{
+		GameObject ervAArr;
+		
+		ervAArr = Instantiate(ervAArrPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervAArr.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvAaRR()
+	{
+		GameObject ervAaRR;
+		
+		ervAaRR = Instantiate(ervAaRRPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervAaRR.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvAaRr()
+	{
+		GameObject ervAaRr;
+		
+		ervAaRr = Instantiate(ervAaRrPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervAaRr.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvAarr()
+	{
+		GameObject ervAarr;
+		
+		ervAarr = Instantiate(ervAarrPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervAarr.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvaaRR()
+	{
+		GameObject ervaaRR;
+		
+		ervaaRR = Instantiate(ervaaRRPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervaaRR.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvaaRr()
+	{
+		GameObject ervaaRr;
+		
+		ervaaRr = Instantiate(ervaaRrPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervaaRr.transform.SetParent(gameObject.transform, false);
+	}
+
+	public void geraErvaarr()
+	{
+		GameObject ervaarr;
+		
+		ervaarr = Instantiate(ervaarrPrefab, transform.position, 
+		                      transform.rotation) as GameObject;
+		
+		ervaarr.transform.SetParent(gameObject.transform, false);
 	}
 
 	public void geraHemaciasResultantes()

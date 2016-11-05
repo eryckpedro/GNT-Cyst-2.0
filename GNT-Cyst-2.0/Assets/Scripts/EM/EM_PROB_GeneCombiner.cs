@@ -10,6 +10,7 @@ public class EM_PROB_GeneCombiner : MonoBehaviour {
 	public static int tipoElementoCombinado;
 	public GameObject[] vetorErvilhas;
 	public static Dictionary<string, int> mapaProbabilidades;
+	public static Dictionary<string, float> mapaProbabilidades2;
 	public static int numErvilhasGeradas;
 
 	private List<string> resultado;
@@ -43,6 +44,12 @@ public class EM_PROB_GeneCombiner : MonoBehaviour {
 			combinaAlelosHemacia();
 			Application.LoadLevel("EM_PLM_ABO_TelaResultado");
 		}
+
+		if( tipoElementoCombinado == 4)
+		{
+			combinaAlelosSLM();
+			Application.LoadLevel("EM_SLM_TelaResultado");
+		}
 		
 	}
 
@@ -64,6 +71,96 @@ public class EM_PROB_GeneCombiner : MonoBehaviour {
 		
 		resultado = new List<string>();
 		mapaProbabilidades = new Dictionary<string, int>();
+		mapaProbabilidades2 = new Dictionary<string, float>();
+	}
+
+	void combinaAlelosSLM()
+	{
+		float probAlelo_AARR = 0, probAlelo_AARr = 0, probAlelo_AArr = 0, probAlelo_AaRR = 0, probAlelo_AaRr = 0, probAlelo_Aarr = 0;
+		float probAlelo_aaRR = 0, probAlelo_aaRr = 0, probAlelo_aarr = 0;
+
+		string[] vetorAlelos1 = new string[4];
+		string[] vetorAlelos2 = new string[4];
+
+
+		int cont = 0;
+		for(int i = 0; i < 2; i++)
+		{
+			for(int j = 0; j < 2; j++)
+			{
+				string tempRes = vetorGene1[i].ToString() + vetorGene2[j].ToString();
+
+				if(tempRes.Equals("aA")) tempRes = "Aa";
+
+				vetorAlelos1[cont] = tempRes;
+				cont++;
+			}
+		}
+
+		cont = 0;
+		for(int i = 2; i < 4; i++)
+		{
+			for(int j = 2; j < 4; j++)
+			{
+				string tempRes = vetorGene1[i].ToString() + vetorGene2[j].ToString();
+				
+				if(tempRes.Equals("rR")) tempRes = "Rr";
+
+				vetorAlelos2[cont] = tempRes;
+				cont++;
+			}
+		}
+
+
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 4; j++)
+			{
+				string tempRes = vetorAlelos1[i] + vetorAlelos2[j];
+
+				switch(tempRes)
+				{
+				case "AARR":
+					probAlelo_AARR += 6.25f;
+					break;
+				case "AARr":
+					probAlelo_AARr += 6.25f;
+					break;
+				case "AArr":
+					probAlelo_AArr += 6.25f;
+					break;
+				case "AaRR":
+					probAlelo_AaRR += 6.25f;
+					break;
+				case "AaRr":
+					probAlelo_AaRr += 6.25f;
+					break;
+				case "Aarr":
+					probAlelo_Aarr += 6.25f;
+					break;
+				case "aaRR":
+					probAlelo_aaRR += 6.25f;
+					break;
+				case "aaRr":
+					probAlelo_aaRr += 6.25f;
+					break;
+				case "aarr":
+					probAlelo_aarr += 6.25f;
+					break;
+					
+				}
+			}
+		}
+
+		mapaProbabilidades2.Add("AARR", probAlelo_AARR);
+		mapaProbabilidades2.Add("AARr", probAlelo_AARr);
+		mapaProbabilidades2.Add("AArr", probAlelo_AArr);
+		mapaProbabilidades2.Add("AaRR", probAlelo_AaRR);
+		mapaProbabilidades2.Add("AaRr", probAlelo_AaRr);
+		mapaProbabilidades2.Add("Aarr", probAlelo_Aarr);
+		mapaProbabilidades2.Add("aaRR", probAlelo_aaRR);
+		mapaProbabilidades2.Add("aaRr", probAlelo_aaRr);
+		mapaProbabilidades2.Add("aarr", probAlelo_aarr);
 	}
 	
 	void combinaAlelos()
